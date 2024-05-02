@@ -1,0 +1,20 @@
+{
+  "name": "marou",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:GiaPhu0811/marou.git",
+  "license": "MIT",
+  "author": "Gia Phu",
+  "main": "index.js",
+  "workspaces": [
+    "app/*"
+  ],
+  "scripts": {
+    "build:backend": "yarn workspace backend build",
+    "build:frontend": "yarn workspace frontend build",
+    "dev:backend": "yarn workspace backend dev",
+    "dev:frontend": "yarn workspace frontend dev",
+    "start:backend": "yarn workspace backend start",
+    "start:frontend": "yarn workspace frontend start"
+  }
+}
