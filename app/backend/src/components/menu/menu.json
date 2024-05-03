@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_link_menus",
+  "info": {
+    "displayName": "Menu Item",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "menu_item": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.link"
+    },
+    "is_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "submenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link"
+    }
+  }
+}
