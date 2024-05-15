@@ -1,35 +1,60 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface LinksLink extends Schema.Component {
-  collectionName: 'components_links_links';
+export interface SeoSeo extends Schema.Component {
+  collectionName: 'components_seo_seos';
   info: {
-    displayName: 'Link';
+    displayName: 'SEO';
+    icon: 'globe';
   };
   attributes: {
-    Tittle: Attribute.String & Attribute.Required;
-    Url: Attribute.String & Attribute.Required;
+    metaTitle: Attribute.String & Attribute.Required;
+    metaDescription: Attribute.String & Attribute.Required;
+    ogImage: Attribute.Media;
+    metaRobots: Attribute.Enumeration<
+      [
+        'index, follow',
+        'noindex, follow',
+        'index, nofollow',
+        'noindex, nofollow'
+      ]
+    > &
+      Attribute.DefaultTo<'index, follow'>;
+    canonicalUrl: Attribute.String;
   };
 }
 
-export interface MenuMenu extends Schema.Component {
-  collectionName: 'components_link_menus';
+export interface UiButton extends Schema.Component {
+  collectionName: 'components_ui_buttons';
   info: {
-    displayName: 'Menu Item';
-    icon: 'link';
-    description: '';
+    displayName: 'Button';
   };
   attributes: {
-    menu_item: Attribute.Component<'links.link'>;
-    is_show: Attribute.Boolean & Attribute.DefaultTo<false>;
-    submenu: Attribute.Component<'links.link', true>;
+    title: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    buttonType: Attribute.Enumeration<
+      ['red', 'blue', 'outline red', 'outline blue', 'disable']
+    > &
+      Attribute.DefaultTo<'red'>;
+  };
+}
+
+export interface UiSlider extends Schema.Component {
+  collectionName: 'components_ui_sliders';
+  info: {
+    displayName: 'Slider';
+  };
+  attributes: {
+    slideImage: Attribute.Media & Attribute.Required;
+    slideTitle: Attribute.String;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'links.link': LinksLink;
-      'menu.menu': MenuMenu;
+      'seo.seo': SeoSeo;
+      'ui.button': UiButton;
+      'ui.slider': UiSlider;
     }
   }
 }

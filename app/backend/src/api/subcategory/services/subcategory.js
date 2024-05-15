@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * header service
+ * subcategory service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::header.header');
+module.exports = createCoreService('api::subcategory.subcategory');
