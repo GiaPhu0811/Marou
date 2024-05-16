@@ -1,7 +1,8 @@
 {
   "collectionName": "components_ui_buttons",
   "info": {
-    "displayName": "Button"
+    "displayName": "Button",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,6 +19,7 @@
       "enum": [
         "red",
         "blue",
+        "light",
         "outline red",
         "outline blue",
         "disable"

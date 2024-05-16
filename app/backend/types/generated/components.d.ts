@@ -27,14 +27,36 @@ export interface UiButton extends Schema.Component {
   collectionName: 'components_ui_buttons';
   info: {
     displayName: 'Button';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     link: Attribute.String & Attribute.Required;
     buttonType: Attribute.Enumeration<
-      ['red', 'blue', 'outline red', 'outline blue', 'disable']
+      ['red', 'blue', 'light', 'outline red', 'outline blue', 'disable']
     > &
       Attribute.DefaultTo<'red'>;
+  };
+}
+
+export interface UiContent extends Schema.Component {
+  collectionName: 'components_ui_contents';
+  info: {
+    displayName: 'Content';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    image: Attribute.Media;
+    button: Attribute.Component<'ui.button'>;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
   };
 }
 
@@ -54,6 +76,7 @@ declare module '@strapi/types' {
     export interface Components {
       'seo.seo': SeoSeo;
       'ui.button': UiButton;
+      'ui.content': UiContent;
       'ui.slider': UiSlider;
     }
   }
